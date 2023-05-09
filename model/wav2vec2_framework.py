@@ -32,7 +32,7 @@ class Wav2Vec2Framework(nn.Module):
             hidden_states (torch.Tensor): with shape `(B, L, D2)`
             quantized_features (torch.Tensor): with shape `(B, L, D2)`
             perplexity (torch.Tensor): with shape `(G, V)`
-            time_mask (torch.BoolTensor): with shape `(B, L, 1)`
+            time_mask (torch.BoolTensor): with shape `(B, L)`
             )
         """
 
@@ -82,7 +82,7 @@ class Wav2Vec2Framework(nn.Module):
         num_masks = sum(time_mask_indices.flatten())
 
         # Maks hidden states
-        mask_values = torch.zeros(num_masks, hidden_size)
+        mask_values = torch.zeros(num_masks, hidden_size, device=hidden_states.device)
         hidden_states[time_mask_indices] = mask_values
 
         return hidden_states, time_mask_indices
