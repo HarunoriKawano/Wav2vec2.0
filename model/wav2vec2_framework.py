@@ -2,7 +2,6 @@ import random
 
 import torch
 from torch import nn
-from torch.nn.utils.rnn import pad_sequence
 
 from model import Wav2Vec2Config
 from model.gumbel_vector_quantizer import GumbelVectorQuantizer

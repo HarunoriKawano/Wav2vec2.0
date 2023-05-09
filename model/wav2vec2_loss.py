@@ -19,8 +19,6 @@ class Wav2vec2Loss(nn.Module):
     def forward(self, encoder_out, quantized_features, perplexity, time_mask_indices):
         target_encoder_out = encoder_out[time_mask_indices]
         labels = quantized_features[time_mask_indices]
-        print(target_encoder_out.shape)
-        print(labels.shape)
 
         # Number of targets per batch
         num_targets_per_batch = [int(time_mask_indices[i].sum()) for i in range(time_mask_indices.size(0))]
