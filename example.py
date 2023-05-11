@@ -51,3 +51,4 @@ if __name__ == '__main__':
     loss = compute_loss(*model_out)
 
     print(loss)
+    loss.backward()
