@@ -3,12 +3,12 @@ import random
 import torch
 from torch import nn
 
-from model import Wav2Vec2Config
+from model import Config
 from model.gumbel_vector_quantizer import GumbelVectorQuantizer
 
 
 class Wav2Vec2Framework(nn.Module):
-    def __init__(self, config: Wav2Vec2Config, feature_extractor: nn.Module, encoder: nn.Module):
+    def __init__(self, config: Config, feature_extractor: nn.Module, encoder: nn.Module):
         super().__init__()
         self.mask_time_prob = config.mask_time_prob
         self.num_mask_time_steps = config.num_mask_time_steps

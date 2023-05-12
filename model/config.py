@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class Wav2Vec2Config:
+class Config:
     code_vector_size: int  # Dimension of quantized code vector (Default: 768)
     num_code_vector_groups: int  # Number of code vector divisions (Default: 2)
     num_code_vectors_per_group: int  # Number of code vectors (Default: 320)

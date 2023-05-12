@@ -3,11 +3,11 @@ import random
 import torch
 from torch import nn
 
-from model.wav2vec2_config import Wav2Vec2Config
+from model.config import Config
 
 
 class Wav2vec2Loss(nn.Module):
-    def __init__(self, config: Wav2Vec2Config):
+    def __init__(self, config: Config):
         super().__init__()
         self.k = config.contrastive_loss_temperature
         self.K = config.num_contrastive_loss_negative_samples

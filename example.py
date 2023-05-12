@@ -3,7 +3,7 @@ import json
 import torch
 from torch import nn
 
-from model import Wav2Vec2Framework, Wav2vec2Loss, Wav2Vec2Config
+from model import Wav2Vec2Framework, Wav2vec2Loss, Config
 
 
 class ExampleFeatureExtractor(nn.Module):
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     input_lengths = torch.tensor([1000, 871, 389, 487]).to(device)
 
     with open("config.json", "r", encoding="utf-8") as f:
-        config = Wav2Vec2Config(**json.load(f))
+        config = Config(**json.load(f))
 
     model = Wav2Vec2Framework(config, feature_extractor, encoder).to(device)
     criterion = Wav2vec2Loss(config)

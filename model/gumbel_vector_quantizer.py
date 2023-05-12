@@ -2,11 +2,11 @@ import torch
 from torch import nn
 from torch.nn.utils.rnn import pad_sequence
 
-from model.wav2vec2_config import Wav2Vec2Config
+from model.config import Config
 
 
 class GumbelVectorQuantizer(nn.Module):
-    def __init__(self, config: Wav2Vec2Config):
+    def __init__(self, config: Config):
         super().__init__()
         self.num_groups = config.num_code_vector_groups
         self.num_vectors = config.num_code_vectors_per_group
