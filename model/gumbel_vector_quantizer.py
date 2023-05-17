@@ -1,6 +1,5 @@
 import torch
 from torch import nn
-from torch.nn.utils.rnn import pad_sequence
 
 from model.config import Config
 
@@ -21,7 +20,8 @@ class GumbelVectorQuantizer(nn.Module):
 
         self.temperature = config.gumbel_init_temperature
 
-    def _compute_perplexity(self, probs: torch.Tensor, lengths: torch.Tensor) -> torch.Tensor:
+    @staticmethod
+    def _compute_perplexity(probs: torch.Tensor, lengths: torch.Tensor) -> torch.Tensor:
         """
         Args:
             probs (torch.Tensor): with shape `(B, L, G, V)`
