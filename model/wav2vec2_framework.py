@@ -37,7 +37,7 @@ class Wav2Vec2Framework(nn.Module):
         """
 
         hidden_states, lengths = self.feature_extractor(input_values, lengths)
-        masked_hidden_states, time_mask_indices = self.time_masking(hidden_states, lengths)
+        masked_hidden_states, time_mask_indices = self.time_masking(hidden_states.clone(), lengths)
 
         quantized_features, perplexity = self.quantizer(hidden_states, lengths)
 
